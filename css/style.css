@@ -1,0 +1,370 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/**  ............................header wrapper starts ................................. **/
+.header-wrapper > div {
+    display: inline-block;
+    vertical-align: middle;
+}
+.header-list-wrapper ul {
+    margin: 0;
+}
+.header-list-wrapper ul li {
+    display: inline-block;
+    list-style-type: none;
+    margin-right: 15px;
+    font-size: 16px;
+    vertical-align: middle;
+}
+.header-list-wrapper ul li a {
+    color: #757575;
+    text-decoration: none;
+}
+.list-outer-wrapper > div {
+    display: inline-block;
+    padding: 10px;
+}
+.input-wrapper {
+    float: right;
+    padding: 10px;
+    border-left: 1px solid lightgrey;
+}
+.input-wrapper span {
+    color: darkgray;
+}
+.input-wrapper input {
+    height: 3em;
+    border: none;
+    box-shadow: none;
+    margin-left: 10px;
+}
+.input-wrapper input:focus {
+    outline: none;
+}
+::-webkit-input-placeholder {
+    color: darkgray;
+    letter-spacing: 0.02em;
+    margin-left: 10px;
+    padding-left: 10px;
+}
+.input-wrapper .login-btn {
+    color: #25a0d2;
+    border: 2px solid #25a0d2;
+    background: white;
+    border-radius: 2px;
+    padding: 5px 20px;
+}
+.input-wrapper .signup-link {
+    display: inline-block;
+    margin: 0 20px;
+    color: #757575;
+    letter-spacing: 0.05em;
+}
+
+/**  ............................banner wrapper starts ................................. **/
+
+.banner-wrapper {
+    background: #7b8994;
+    color: white;
+    padding: 15px 0;
+}
+.banner-wrapper h2 {
+    font-weight: 400;
+    margin-top: 0;
+}
+.banner-wrapper .inner-wrapper > div{
+    display: inline-block;
+}
+.banner-wrapper .inner-wrapper > div:nth-child(1) {
+    width: 5%;
+    vertical-align: top;
+}
+.banner-wrapper .inner-wrapper > div:nth-child(2) {
+    width: 78%;
+    vertical-align: top;
+}
+.banner-wrapper p {
+    font-family: sans-serif;
+    letter-spacing: 0.02em;
+    font-size: 15px;
+    line-height: 25px;
+}
+
+/** ............................ keyword input wrapper ................................. **/
+
+.filter-wrapper {
+    padding: 10px 0;
+    background: white;
+}
+.keyword-input-wrapper > div {
+    display: inline-block;
+    vertical-align: top;
+}
+.keyword-input-wrapper input {
+    height: 3em;
+    border: none;
+    box-shadow: none;
+    margin-left: 10px;
+}
+.keyword-input-wrapper span {
+    color: darkgray;
+}
+.keyword-input-wrapper input:focus {
+    outline: none;
+}
+.keyword-input-wrapper > div:nth-child(2) {
+    float: right;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+.category-wrapper {
+    background: #f6f7f9;
+    padding: 30px 0;
+    border: 1px solid rgb(224, 224, 224);
+}
+.category-wrapper .title {
+    margin-bottom: 10px;
+    color: #484848;
+    letter-spacing: 0.04em;
+}
+.category-wrapper input, .category-wrapper select {
+    border: 1px solid #c3c3c3;
+    border-radius: 2px;
+    padding-left: 10px;
+}
+.category-wrapper .list-wrapper {
+    margin-bottom: 5px;
+    color: #9a9a9a;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+}
+.category-wrapper .table-row > div {
+    border-right: 1px solid lightgrey;
+    height: 180px;
+    padding-left: 20px;
+}
+.category-wrapper .table-row > div:last-child {
+    border-right: 0;
+}
+
+/** ........................................... customise wrapper starts ...................................... **/
+.customise-wrapper .customise-title {
+    color: #25a0d2;
+    margin-right: 10px;
+    text-align: right;
+    padding: 20px;
+    display: inline-block;
+    cursor: pointer;
+}
+.customise-wrapper .navigation-wrapper {
+    text-align: right;
+    display: inline-block;
+}
+.customise-wrapper .icon {
+    display: inline-block;
+    background: #25a0d2;
+    border: 1px solid #25a0d2;
+    color: white;
+    width: 18px;
+    height: 18px;
+    border-radius: 10px;
+    font-size: 12px;
+    text-align: center;
+}
+.customise-wrapper .navigation-wrapper span {
+    color: white;
+    background: lightgrey;
+    width: 30px;
+    height: 30px;
+    padding-top: 5px;
+    text-align: center;
+    border-radius: 35px;
+    font-size: 18px;
+    cursor: pointer;
+}
+.customised-list {
+    width: 200px;
+    display: inline-block;
+    background: white;
+    border: 1px solid lightgrey;
+    padding: 10px;
+    color: #949494;
+    position: absolute;
+    z-index: 100;
+    top: 10px;
+}
+.customised-list .inner-wrapper {
+    margin-bottom: 8px;
+    font-size: 13px;
+}
+.customised-list .inner-wrapper span:first-child{
+    margin-right: 10px;
+}
+.customised-list .inner-wrapper label {
+    font-weight: 400;
+}
+.close-btn-wrapper {
+    color: #25a0d2;
+    float: right;
+    font-size: 12px;
+    cursor: pointer;
+}
+.close-btn-wrapper span:first-child {
+    margin-right: 5px;
+}
+.close-btn-wrapper span:nth-child(2) {
+    background: #25a0d2;
+    color: white;
+    border-radius: 8px;
+    padding: 2px;
+    font-size: 9px;
+}
+/**    ........................................ company details wrapper starts ................................. **/
+
+.company-details-wrapper {
+    margin-bottom: 30px;
+}
+.company-details-wrapper .inner-wrapper {
+    overflow: scroll;
+}
+.company-details-wrapper .table-header {
+    background: #7b8994;
+    padding: 10px;
+    color: white;
+    letter-spacing: 0.03em;
+    width: 150%;
+    height: 40px;
+}
+.company-details-wrapper .table-description {
+    width: 150%;
+}
+.company-details-wrapper .table-header > div:first-child, .company-details-wrapper .table-description > div:first-child {
+    width: 18%;
+    float: left;
+}
+.company-details-wrapper .table-header > div:not(:first-child), .company-details-wrapper .table-description > div:not(:first-child) {
+    width: 10.75%;
+    float: left;
+}
+.company-list {
+    clear: both;
+    color: gray;
+    border-bottom: 1px solid rgba(199, 199, 199, 0.48);
+}
+.company-list .img-wrapper {
+    float: left;
+    margin-right: 10px;
+}
+.company-list > div:nth-child(1) {
+    position: relative;
+    background: #f6f7f9;
+    padding: 20px 10px;
+    border-right: 2px solid #e0e0e0;
+    border-left: 2px solid #e0e0e0;
+}
+.company-list .content-wrapper {
+    word-spacing: normal;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 80%;
+    display: inline-block;
+    font-family: sans-serif;
+    color: grey;
+}
+.company-list .content-wrapper .company-name {
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #565656;
+}
+.company-list > div:not(:first-child) {
+    padding: 31px 20px 40px 20px;
+    font-size: 13px;
+    font-family: sans-serif;
+    letter-spacing: 0.04em;
+}
+.company-list:hover > div:not(:first-child) {
+    background: #c0ebf9;
+    border-bottom: 1px solid #c0ebf9;
+}
+.company-list > div:nth-child(4) {
+    color: #25a0d2;
+}
+.hover-card-wrapper {
+    position: absolute;
+    width: 255px;
+    height: 160px;
+    top: -160px;
+    left: -38px;
+    background: white;
+    z-index: 4;
+    border: 1px solid #d4d4d4;
+    padding: 10px;
+    box-shadow: 1px 1px 4px #d2d2d2;
+}
+.hover-card-wrapper .img-wrapper {
+    width: 100%;
+    /*margin: 0 0 10px 0;*/
+    float: none;
+}
+.hover-card-wrapper div {
+    white-space: normal;
+    margin-top: 5px;
+}
+.hover-card-wrapper .description-wrapper {
+    font-size: 12px;
+}
+.hover-card-wrapper .website-link a {
+    color: #25a0d2;
+    font-size: 12px;
+}
+.hover-card-wrapper div i {
+    margin-right: 5px;
+}
+.load-more-btn {
+    color: #25a0d2;
+    border: 2px solid #25a0d2;
+    background: white;
+    border-radius: 2px;
+    padding: 5px 20px;
+}
+.load-more-btn:focus {
+    outline: none;
+}
+
+/**  ................................................  footer wrapper starts .................................  **/
+
+.footer-wrapper {
+    background: #f6f7f9;
+    padding: 20px 10px;
+    margin: 20px 0 0 0;
+}
+.footer-wrapper .copyright-wrapper {
+    color: #adadad;
+    margin: 10px 0;
+    letter-spacing: 0.04em;
+    font-size: 12px;
+}
+.footer-wrapper .copyright-wrapper a {
+    color: #adadad;
+    text-decoration: underline;
+    margin-left: 5px;
+}
+.footer-wrapper .copyright-wrapper a:first-child {
+    border-right: 1px solid #adadad;
+    padding-right: 5px;
+}
+.footer-wrapper .social-links i {
+    background: #7a8791;
+    color: white;
+    width: 21px;
+    padding-top: 4px;
+    height: 21px;
+    border-radius: 20px;
+    text-align: center;
+    font-size: 14px;
+    margin-right: 10px;
+}

@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApplication">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="node_modules/angular-route/angular-route.min.js"></script>
+    <script src="script.js"></script>
+    <script src="controllers/companyController.js"></script>
+</head>
+<body ng-controller="myController">
+<div class="row">
+    <div class="container container-fluid">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="header-wrapper">
+                <div class="list-outer-wrapper">
+                    <div>
+                        <img src="images/logo.jpg" alt="" style="width: 200px;">
+                    </div>
+                    <div class="header-list-wrapper">
+                        <ul>
+                            <li><a href="#">Companies</a></li>
+                            <li><a href="#">Investors</a></li>
+                            <li><a href="#">Fundings</a></li>
+                            <li><a href="#">Insights</a></li>
+                            <li><a href="#">About us</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="input-wrapper">
+                    <span class="glyphicon glyphicon-search"></span><input type="search" placeholder="Search Nucleus 42.." class="search-input-box">
+                    <span><a href="#" class="signup-link">Sign up</a></span>
+                    <span><button type="button" class="login-btn">Login</button></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row banner-wrapper">
+    <div class="container container-fluid">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 inner-wrapper">
+        <div>
+            <span><img src="images/company-icon.jpg" alt="" style="width: 50px;"></span>
+        </div>
+        <div>
+            <h2><span>Companies</span></h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </div>
+    </div>
+    </div>
+</div>
+<div class="row filter-wrapper">
+    <div class="container container-fluid">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="keyword-input-wrapper">
+                <div>
+                    <span class="glyphicon glyphicon-search"></span>
+                    <input type="search" placeholder="Enter a keyword">
+                </div>
+                <div>
+                    <span>Clear all</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row category-wrapper">
+    <div class="container container-fluid">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="row table-row">
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                    <div class="title"><b>Location</b></div>
+                    <div>
+                        <div style="margin-bottom: 10px;"><input type="text" placeholder="Search location"></div>
+                        <div ng-repeat="city in cities" class="list-wrapper">{{city}}</div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                    <div class="title"><b>Market</b></div>
+                    <div>
+                        <div style="margin-bottom: 10px;"><input type="text" placeholder="Search market"></div>
+                        <div ng-repeat="mark in markets" class="list-wrapper">{{mark}}</div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                    <div class="title"><b>Stage</b></div>
+                    <div ng-repeat="s in stages" class="list-wrapper">{{s}}</div>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                    <div class="title"><b>Founder</b></div>
+                    <div><input type="text" placeholder="Search founder"></div>
+                    <div style="margin-top: 20px;" class="title"><b>Investor</b></div>
+                    <div><input type="text" placeholder="Search investor"></div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <div class="title"><b>Year funded</b></div>
+                            <div>
+                                <select name="">
+                                    <option value="" selected>From</option>
+                                </select>
+                                <select name="">
+                                    <option value="" selected>To</option>
+                                </select>
+                            </div>
+                            <div style="margin-top: 20px;">
+                                <div class="title"><b>Total funding raised</b></div>
+                                <div>
+                                    <select name="">
+                                        <option value="" selected>From</option>
+                                    </select>
+                                    <select name="">
+                                        <option value="" selected>To</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <div class="title"><b>Year founded</b></div>
+                            <div>
+                                <select name="">
+                                    <option value="" selected>From</option>
+                                </select>
+                                <select name="">
+                                    <option value="" selected>To</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row customise-wrapper">
+    <div class="container container-fluid">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div style="float: right;position: relative">
+                <div class="customise-title" ng-click="openCustomisedList()"><span>Customise column</span> <span class="icon">+</span></div>
+                <div class="navigation-wrapper">
+                    <span class="glyphicon glyphicon-arrow-left"></span>
+                    <span class="glyphicon glyphicon-arrow-right"></span>
+                </div>
+                <div class="customised-list" ng-show="showCustomisedList">
+                    <div class="close-btn-wrapper" ng-click="closeCustomisedList()"><span>Close</span><span class="glyphicon glyphicon-remove"></span></div>
+                    <div ng-repeat="(key,value) in companyDetailsArr[0]" style="clear: both">
+                        <div ng-if="key !== 'basicDetail'" class="inner-wrapper">
+                            <span><input type="checkbox" id="{{key}}"></span>
+                            <span><label for="{{key}}">{{key}}</label></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row company-details-wrapper">
+    <div class="container container-fluid">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 inner-wrapper">
+            <!--<div class="row table-header">-->
+                <!--<div class="col-lg-3 col-md-3 col-sm-3 col-xs-2">-->
+                    <!--<div class="title"><b>Company</b></div>-->
+                <!--</div>-->
+                <!--<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">-->
+                    <!--<div class="title"><b>Location</b></div>-->
+                <!--</div>-->
+                <!--<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">-->
+                    <!--<div class="title"><b>Market</b></div>-->
+                <!--</div>-->
+                <!--<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">-->
+                    <!--<div class="title"><b>Website</b></div>-->
+                <!--</div>-->
+                <!--<div class="col-lg-1 col-md-1 col-sm-2 col-xs-2">-->
+                    <!--<div class="title"><b>Employees</b></div>-->
+                <!--</div>-->
+                <!--<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">-->
+                    <!--<div class="title"><b>Stage</b></div>-->
+                <!--</div>-->
+                <!--<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">-->
+                    <!--<div class="title"><b>Funding</b></div>-->
+                <!--</div>-->
+                <!--<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">-->
+                    <!--<div class="title"><b>Founder</b></div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <div class="table-header">
+                <div>
+                    <div class="title"><b>Company</b></div>
+                </div>
+                <div>
+                    <div class="title"><b>Location</b></div>
+                </div>
+                <div>
+                    <div class="title"><b>Market</b></div>
+                </div>
+                <div>
+                    <div class="title"><b>Website</b></div>
+                </div>
+                <div>
+                    <div class="title"><b>Employees</b></div>
+                </div>
+                <div>
+                    <div class="title"><b>Stage</b></div>
+                </div>
+                <div>
+                    <div class="title"><b>Funding</b></div>
+                </div>
+                <div>
+                    <div class="title"><b>Founder</b></div>
+                </div>
+            </div>
+            <div class="company-list table-description" ng-repeat="company in companyDetailsArr">
+                <div class="inner-wrapper">
+                    <div>
+                        <div class="img-wrapper" ng-mouseover="getCards($index)" ng-mouseleave="hideCards($index)"><img src="{{company.basicDetail.imageUrl}}" alt=""></div>
+                        <div class="content-wrapper">
+                            <div class="company-name">{{company.basicDetail.name}}</div>
+                            <div>{{company.basicDetail.description}}</div>
+                            <div class="hover-card-wrapper text-center" ng-init="companyCard[$index]=false" ng-show="companyCard[$index]">
+                                <div class="img-wrapper"><img src="{{company.basicDetail.imageUrl}}" alt=""></div>
+                                <div>
+                                    <div class="company-name">{{company.basicDetail.name}}</div>
+                                    <div class="description-wrapper">{{company.basicDetail.description}}</div>
+                                    <div class="website-link"><a href="#">{{company.basicDetail.website}}</a></div>
+                                    <div>
+                                        <i class="fa fa-facebook"></i>
+                                        <i class="fa fa-twitter"></i>
+                                        <i class="fa fa-linkedin"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <div>{{company.location}}</div>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <div>{{company.market}}</div>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <div>{{company.website}}</div>
+                    </div>
+                </div>
+                <div>
+                    <div ng-if="company.employees != null">{{company.employees}}</div>
+                    <div ng-if="company.employees == null">-</div>
+                </div>
+                <div>
+                    <div>{{company.stage}}</div>
+                </div>
+                <div>
+                    <div>{{company.funding}}</div>
+                </div>
+                <div>
+                    <div>{{company.founder}}</div>
+                </div>
+            </div>
+            <!--<div class="row company-list" ng-repeat="company in companyDetailsArr">-->
+                <!--<div class="col-lg-3 col-md-3 col-sm-3 col-xs-2 inner-wrapper">-->
+                    <!--<div>-->
+                        <!--<div class="img-wrapper" ng-mouseover="getCards($index)" ng-mouseleave="hideCards($index)"><img src="{{company.basicDetail.imageUrl}}" alt=""></div>-->
+                        <!--<div class="content-wrapper">-->
+                            <!--<div class="company-name">{{company.basicDetail.name}}</div>-->
+                            <!--<div>{{company.basicDetail.description}}</div>-->
+                            <!--<div class="hover-card-wrapper text-center" ng-init="companyCard[$index]=false" ng-show="companyCard[$index]">-->
+                                <!--<div class="img-wrapper"><img src="{{company.basicDetail.imageUrl}}" alt=""></div>-->
+                                <!--<div>-->
+                                    <!--<div class="company-name">{{company.basicDetail.name}}</div>-->
+                                    <!--<div class="description-wrapper">{{company.basicDetail.description}}</div>-->
+                                    <!--<div class="website-link"><a href="#">{{company.basicDetail.website}}</a></div>-->
+                                    <!--<div>-->
+                                        <!--<i class="fa fa-facebook"></i>-->
+                                        <!--<i class="fa fa-twitter"></i>-->
+                                        <!--<i class="fa fa-linkedin"></i>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">-->
+                    <!--<div>-->
+                       <!--<div>{{company.location}}</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">-->
+                    <!--<div>-->
+                        <!--<div>{{company.market}}</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">-->
+                    <!--<div>-->
+                        <!--<div>{{company.website}}</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="col-lg-1 col-md-1 col-sm-2 col-xs-2">-->
+                   <!--<div ng-if="company.employees != null">{{company.employees}}</div>-->
+                   <!--<div ng-if="company.employees == null">-</div>-->
+                <!--</div>-->
+                <!--<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">-->
+                    <!--<div>{{company.stage}}</div>-->
+                <!--</div>-->
+                <!--<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">-->
+                    <!--<div>{{company.funding}}</div>-->
+                <!--</div>-->
+                <!--<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">-->
+                    <!--<div>{{company.founder}}</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        </div>
+    </div>
+</div>
+<div class="text-center"><button type="button" class="load-more-btn" ng-click="loadMoreCompanyList()">Load more</button></div>
+<div class="footer-wrapper text-center">
+    <div>
+        <img src="images/nucleus-logo.jpg" alt="" style="height:32px; width: auto">
+    </div>
+    <div class="copyright-wrapper">Copyright &copy; 2015 Nucleus. All rights reserved <a href="#">Terms of use</a> <a href="#">Privacy policy</a></div>
+    <div class="social-links">
+        <a href="#"><i class="fa fa-facebook"></i></a>
+        <a href="#"><i class="fa fa-twitter"></i></a>
+        <a href="#"><i class="fa fa-linkedin"></i></a>
+        <a href="#"><i class="fa fa-instagram"></i></a>
+    </div>
+</div>
+</body>
+</html>
