@@ -1,26 +1,26 @@
 [
   {
-    "basicDetail": {"name": "urbanclap", "description": "In store interactive technology", "imageUrl": "images/urbanclap-logo.jpg"}, "location": "Delhi", "market": "E-commerce", "website": "urbanclap.com", "employees": 41, "stage": "Pre Series A", "totalFunding": "3 Million", "founder": "Jammy Gayle"
+    "company": {"name": "urbanclap", "description": "In store interactive technology", "imageUrl": "images/urbanclap-logo.jpg"}, "location": "Delhi", "market": "E-commerce", "website": "urbanclap.com", "employees": 41, "stage": "Pre Series A", "totalFunding": "3 Million", "founder": "Jammy Gayle"
   },
   {
-    "basicDetail": {"name": "shopsense", "description": "In store interactive technology", "imageUrl": "images/shopsense-logo.jpg"}, "location": "Mumbai", "market": "B2B", "website": "shopsense.com", "employees": 50, "stage": "Pre Series B", "totalFunding": "2 Million", "founder": "Jammy Gayle"
+    "company": {"name": "shopsense", "description": "In store interactive technology", "imageUrl": "images/shopsense-logo.jpg"}, "location": "Mumbai", "market": "B2B", "website": "shopsense.com", "employees": 50, "stage": "Pre Series B", "totalFunding": "2 Million", "founder": "Jammy Gayle"
   },
   {
-    "basicDetail": { "name": "clairvolex", "description": "In store interactive technology", "imageUrl": "images/urbanclap-logo.jpg"}, "location": "Bangalore", "market": "B2B", "website": "clairvolex.com", "employees": null, "stage": "Pre Series B", "totalFunding": "5 Million", "founder": "Jammy Gayle"
+    "company": { "name": "clairvolex", "description": "In store interactive technology", "imageUrl": "images/urbanclap-logo.jpg"}, "location": "Bangalore", "market": "B2B", "website": "clairvolex.com", "employees": null, "stage": "Pre Series B", "totalFunding": "5 Million", "founder": "Jammy Gayle"
   },
   {
-    "basicDetail": {"name": "AhaTaxis", "description": "In store interactive technology", "imageUrl": "images/shopsense-logo.jpg"}, "location": "Mumbai", "market": "B2B", "website": "AhaTaxis.com", "employees": 50, "stage": "Pre Series B", "totalFunding": "3 Million", "founder": "Jammy Gayle"
+    "company": {"name": "AhaTaxis", "description": "In store interactive technology", "imageUrl": "images/shopsense-logo.jpg"}, "location": "Mumbai", "market": "B2B", "website": "AhaTaxis.com", "employees": 50, "stage": "Pre Series B", "totalFunding": "3 Million", "founder": "Jammy Gayle"
   },
   {
-    "basicDetail": {"name": "pickkr", "description": "In store interactive technology", "imageUrl": "images/urbanclap-logo.jpg"}, "location": "Delhi", "market": "B2B", "website": "pickkr.com", "employees": 20, "stage": "Pre Series B", "totalFunding": "4 Million", "founder": "Jammy Gayle"
+    "company": {"name": "pickkr", "description": "In store interactive technology", "imageUrl": "images/urbanclap-logo.jpg"}, "location": "Delhi", "market": "B2B", "website": "pickkr.com", "employees": 20, "stage": "Pre Series B", "totalFunding": "4 Million", "founder": "Jammy Gayle"
   },
   {
-    "basicDetail": {"name": "Hipship", "description": "In store interactive technology", "imageUrl": "images/shopsense-logo.jpg"}, "location": "Hyderabad", "market": "B2B", "website": "hipship.com", "employees": null, "stage": "Pre Series B", "totalFunding": "1 Million", "founder": "Jammy Gayle"
+    "company": {"name": "Hipship", "description": "In store interactive technology", "imageUrl": "images/shopsense-logo.jpg"}, "location": "Hyderabad", "market": "B2B", "website": "hipship.com", "employees": null, "stage": "Pre Series B", "totalFunding": "1 Million", "founder": "Jammy Gayle"
   },
   {
-    "basicDetail": {"name": "Truelancer", "description": "In store interactive technology", "imageUrl": "images/urbanclap-logo.jpg"}, "location": "Chennai", "market": "B2B", "website": "truelancer.com", "employees": 41, "stage": "Pre Series B", "totalFunding": "2 Million", "founder": "Jammy Gayle"
+    "company": {"name": "Truelancer", "description": "In store interactive technology", "imageUrl": "images/urbanclap-logo.jpg"}, "location": "Chennai", "market": "B2B", "website": "truelancer.com", "employees": 41, "stage": "Pre Series B", "totalFunding": "2 Million", "founder": "Jammy Gayle"
   },
   {
-    "basicDetail": {"name": "Goodbox", "description": "In store interactive technology", "imageUrl": "images/shopsense-logo.jpg"}, "location": "Bangalore", "market": "B2B", "website": "goodbox.com", "employees": 52, "stage": "Pre Series B", "totalFunding": "8 Million", "founder": "Jammy Gayle"
+    "company": {"name": "Goodbox", "description": "In store interactive technology", "imageUrl": "images/shopsense-logo.jpg"}, "location": "Bangalore", "market": "B2B", "website": "goodbox.com", "employees": 52, "stage": "Pre Series B", "totalFunding": "8 Million", "founder": "Jammy Gayle"
   }
 ]

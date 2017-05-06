@@ -98,7 +98,8 @@
     padding: 10px 0;
     background: white;
 }
-.keyword-input-wrapper > div {
+.keyword-input-wrapper > div:first-child {
+    width: 90%;
     display: inline-block;
     vertical-align: top;
 }
@@ -108,8 +109,10 @@
     box-shadow: none;
     margin-left: 10px;
 }
-.keyword-input-wrapper span {
-    color: darkgray;
+.keyword-input-wrapper .search-icon {
+    display: inline-block;
+    width: 5%;
+    vertical-align: middle;
 }
 .keyword-input-wrapper input:focus {
     outline: none;
@@ -136,7 +139,7 @@
     padding-left: 10px;
 }
 .category-wrapper .list-wrapper {
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     color: #9a9a9a;
     font-size: 13px;
     letter-spacing: 0.04em;
@@ -229,13 +232,15 @@
 }
 .company-details-wrapper .inner-wrapper {
     overflow: scroll;
+    position: relative
 }
 .company-details-wrapper .table-header {
-    background: #7b8994;
+    background: rgb(150, 163, 173);
+    text-align: center;
     padding: 10px;
     color: white;
     letter-spacing: 0.03em;
-    width: 150%;
+    /*width: 150%;*/
     height: 40px;
 }
 .company-details-wrapper .table-description {
@@ -246,13 +251,32 @@
     float: left;
 }
 .company-details-wrapper .table-header > div:not(:first-child), .company-details-wrapper .table-description > div:not(:first-child) {
-    width: 10.75%;
+    width: 10%;
     float: left;
+    border-bottom: 1px solid rgba(199, 199, 199, 0.48);
+}
+.company-details-wrapper .table-header .title {
+    text-align: center;
+}
+.company-details-wrapper .company-basic-info-ending-wrapper {
+    background: #f6f7f9;
+    height: 60px;
+    border-top: 1px solid rgba(199, 199, 199, 0.48);
+    border-bottom: 1px solid rgba(199, 199, 199, 0.48);
+}
+.company-details-wrapper .table-ending-wrapper {
+    height: 60px;
+    border-bottom: 1px solid rgba(199, 199, 199, 0.48);
+    border-top: 1px solid rgba(199, 199, 199, 0.48);
 }
 .company-list {
     clear: both;
     color: gray;
-    border-bottom: 1px solid rgba(199, 199, 199, 0.48);
+    /*border-bottom: 1px solid rgba(199, 199, 199, 0.48);*/
+}
+.company-list .company-basic-info {
+    padding: 20px 10px;
+    position: relative;
 }
 .company-list .img-wrapper {
     float: left;
@@ -260,10 +284,10 @@
 }
 .company-list > div:nth-child(1) {
     position: relative;
+    overflow: visible;
     background: #f6f7f9;
-    padding: 20px 10px;
-    border-right: 2px solid #e0e0e0;
-    border-left: 2px solid #e0e0e0;
+    border-right: 1px solid rgba(123, 137, 148, 0.74);
+    border-left: 1px solid rgba(123, 137, 148, 0.74);
 }
 .company-list .content-wrapper {
     word-spacing: normal;
@@ -281,7 +305,7 @@
     color: #565656;
 }
 .company-list > div:not(:first-child) {
-    padding: 31px 20px 40px 20px;
+    /*padding: 31px 20px 40px 10px;*/
     font-size: 13px;
     font-family: sans-serif;
     letter-spacing: 0.04em;
@@ -290,15 +314,19 @@
     background: #c0ebf9;
     border-bottom: 1px solid #c0ebf9;
 }
-.company-list > div:nth-child(4) {
+.company-list .website-link {
     color: #25a0d2;
+}
+.table-content {
+    text-align: center;
+    padding: 31px 20px 40px 10px;
 }
 .hover-card-wrapper {
     position: absolute;
     width: 255px;
     height: 160px;
-    top: -160px;
-    left: -38px;
+    top: 0px;
+    left: 50px;
     background: white;
     z-index: 4;
     border: 1px solid #d4d4d4;
@@ -367,4 +395,86 @@
     text-align: center;
     font-size: 14px;
     margin-right: 10px;
+}
+/**   ...................................... tag input wrapper starts ............................. **/
+.tag-wrapper {
+    display: inline-block;
+}
+.tag-wrapper div {
+    background: #25a0d2;
+    border: 1px solid #25a0d2;
+    border-radius: 4px;
+    display: inline-block;
+    margin-right: 10px;
+    padding: 5px 10px;
+    color: white;
+}
+.tag-wrapper div .remove-icon {
+    color: white;
+    display: inline-block;
+}
+@media only screen and (min-width: 1025px){
+    .each-category {
+        margin-bottom: 50px;
+    }
+    .company-details-wrapper .table-header > div:first-child, .company-details-wrapper .table-description > div:first-child {
+        width: 20%;
+    }
+    .header-container {
+        width: 90%;
+    }
+}
+@media (max-width: 1196px) and (min-width: 992px) {
+    .header-container {
+        width: 100%;
+    }
+}
+@media (max-width: 991px) and (min-width: 768px) {
+    .company-details-wrapper .table-description {
+        width: 171%;
+    }
+    .company-details-wrapper .table-header > div:first-child, .company-details-wrapper .table-description > div:first-child {
+        width: 27%;
+    }
+    .banner-wrapper .inner-wrapper > div:nth-child(1) {
+        width: 10%;
+    }
+    .each-category {
+        margin-bottom: 50px;
+    }
+}
+@media (max-width: 1024px) and (min-width: 992px) {
+    .each-category {
+        margin-bottom: 50px;
+    }
+    .company-details-wrapper .table-header > div:first-child, .company-details-wrapper .table-description > div:first-child {
+        width: 20%;
+    }
+}
+@media only screen and (max-width: 767px){
+    .each-category {
+        margin-bottom: 50px;
+    }
+    .company-details-wrapper .table-description {
+        width: 320%;
+    }
+    .company-details-wrapper .table-header > div:first-child, .company-details-wrapper .table-description > div:first-child {
+        width: 25%;
+    }
+    .header-list-wrapper ul li {
+        font-size: 12px;
+        margin-right: 10px;
+    }
+    .input-wrapper {
+        border-left: 0;
+    }
+    .banner-wrapper .inner-wrapper > div:nth-child(1) {
+        width: 17%;
+    }
+    .banner-wrapper .inner-wrapper > div:nth-child(2) {
+        width: 75%;
+    }
+    .keyword-input-wrapper > div:first-child {
+        width: 80%;
+    }
 }

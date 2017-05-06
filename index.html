@@ -8,12 +8,13 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="node_modules/angular/angular.min.js"></script>
     <script src="node_modules/angular-route/angular-route.min.js"></script>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="script.js"></script>
     <script src="controllers/companyController.js"></script>
 </head>
 <body ng-controller="myController">
 <div class="row">
-    <div class="container container-fluid">
+    <div class="container container-fluid header-container">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="header-wrapper">
                 <div class="list-outer-wrapper">
@@ -57,11 +58,14 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="keyword-input-wrapper">
                 <div>
-                    <span class="glyphicon glyphicon-search"></span>
-                    <input type="search" placeholder="Enter a keyword">
+                    <span class="glyphicon glyphicon-search search-icon"></span>
+                    <div class="tag-wrapper">
+                        <div ng-repeat="tag in suggestedTags">{{tag}} <span class="glyphicon glyphicon-remove remove-icon" ng-click="removeTag($index)"></span></div>
+                    </div>
+                    <input type="search" placeholder="Enter a keyword" ng-model="searchAll" ng-keypress="getSearchedTags($event)">
                 </div>
                 <div>
-                    <span>Clear all</span>
+                    <div ng-click="clearKeyword()">Clear all</div>
                 </div>
             </div>
         </div>
@@ -71,31 +75,45 @@
     <div class="container container-fluid">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="row table-row">
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                <div class="col-lg-2 col-md-4 col-sm-4 col-xs-6 each-category">
                     <div class="title"><b>Location</b></div>
                     <div>
-                        <div style="margin-bottom: 10px;"><input type="text" placeholder="Search location"></div>
-                        <div ng-repeat="city in cities" class="list-wrapper">{{city}}</div>
+                        <div style="margin-bottom: 10px;">
+                            <input type="text" list="locationSuggestion" placeholder="Search location" ng-model="searchAll">
+                            <datalist id="locationSuggestion">
+                                <option ng-repeat="item in companyDetailsArr" value="{{ item.location }}"></option>
+                            </datalist>
+                        </div>
+                        <div ng-repeat="item in cities | filter:searchAll" class="list-wrapper" ng-style="item.checked && {'background-color':'#e4e4e4', 'padding': '5px 10px'} || {'background-color': '#f6f7f9'}">
+                            <span>{{item.city}}</span>
+                            <span ng-show="item.checked" class="glyphicon glyphicon-remove" style="float: right;" ng-click="item.checked=false"></span>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                <div class="col-lg-2 col-md-4 col-sm-4 col-xs-6 each-category">
                     <div class="title"><b>Market</b></div>
                     <div>
-                        <div style="margin-bottom: 10px;"><input type="text" placeholder="Search market"></div>
-                        <div ng-repeat="mark in markets" class="list-wrapper">{{mark}}</div>
+                        <div style="margin-bottom: 10px;"><input type="text" placeholder="Search market" ng-model="searchMarket"></div>
+                        <div ng-repeat="item in markets | filter:searchAll || searchMarket" class="list-wrapper" ng-style="item.checked && {'background-color':'#e4e4e4', 'padding': '5px 10px'} || {'background-color': '#f6f7f9'}">
+                            <span>{{item.market}}</span>
+                            <span ng-show="item.checked" class="glyphicon glyphicon-remove" style="float: right" ng-click="item.checked=false"></span>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                <div class="col-lg-2 col-md-4 col-sm-4 col-xs-6 each-category">
                     <div class="title"><b>Stage</b></div>
-                    <div ng-repeat="s in stages" class="list-wrapper">{{s}}</div>
+                    <div ng-repeat="item in stages | filter:searchAll" class="list-wrapper" ng-style="item.checked && {'background-color':'#e4e4e4', 'padding': '5px 10px'} || {'background-color': '#f6f7f9'}">
+                        <span>{{item.stage}}</span>
+                        <span ng-show="item.checked" class="glyphicon glyphicon-remove" style="float: right" ng-click="item.checked=false"></span>
+                    </div>
                 </div>
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 each-category">
                     <div class="title"><b>Founder</b></div>
                     <div><input type="text" placeholder="Search founder"></div>
                     <div style="margin-top: 20px;" class="title"><b>Investor</b></div>
                     <div><input type="text" placeholder="Search investor"></div>
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <div class="col-lg-4 col-md-8 col-sm-8 col-xs-12 each-category">
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                             <div class="title"><b>Year funded</b></div>
@@ -142,15 +160,15 @@
             <div style="float: right;position: relative">
                 <div class="customise-title" ng-click="openCustomisedList()"><span>Customise column</span> <span class="icon">+</span></div>
                 <div class="navigation-wrapper">
-                    <span class="glyphicon glyphicon-arrow-left"></span>
-                    <span class="glyphicon glyphicon-arrow-right"></span>
+                    <span class="glyphicon glyphicon-arrow-left" id="slide-left-column"></span>
+                    <span class="glyphicon glyphicon-arrow-right" id="slide-right-column"></span>
                 </div>
                 <div class="customised-list" ng-show="showCustomisedList">
                     <div class="close-btn-wrapper" ng-click="closeCustomisedList()"><span>Close</span><span class="glyphicon glyphicon-remove"></span></div>
-                    <div ng-repeat="(key,value) in companyDetailsArr[0]" style="clear: both">
-                        <div ng-if="key !== 'basicDetail'" class="inner-wrapper">
-                            <span><input type="checkbox" id="{{key}}"></span>
-                            <span><label for="{{key}}">{{key}}</label></span>
+                    <div ng-repeat="list in customisedListArr" style="clear: both">
+                        <div ng-if="list.key !== 'company'" class="inner-wrapper">
+                            <span><input type="checkbox" id="{{list.key}}" ng-model="list.checked"></span>
+                            <span><label for="{{list.key}}">{{getDisplayedTitle(list.key)}}</label></span>
                         </div>
                     </div>
                 </div>
@@ -161,162 +179,68 @@
 <div class="row company-details-wrapper">
     <div class="container container-fluid">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 inner-wrapper">
-            <!--<div class="row table-header">-->
-                <!--<div class="col-lg-3 col-md-3 col-sm-3 col-xs-2">-->
-                    <!--<div class="title"><b>Company</b></div>-->
-                <!--</div>-->
-                <!--<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">-->
-                    <!--<div class="title"><b>Location</b></div>-->
-                <!--</div>-->
-                <!--<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">-->
-                    <!--<div class="title"><b>Market</b></div>-->
-                <!--</div>-->
-                <!--<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">-->
-                    <!--<div class="title"><b>Website</b></div>-->
-                <!--</div>-->
-                <!--<div class="col-lg-1 col-md-1 col-sm-2 col-xs-2">-->
-                    <!--<div class="title"><b>Employees</b></div>-->
-                <!--</div>-->
-                <!--<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">-->
-                    <!--<div class="title"><b>Stage</b></div>-->
-                <!--</div>-->
-                <!--<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">-->
-                    <!--<div class="title"><b>Funding</b></div>-->
-                <!--</div>-->
-                <!--<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">-->
-                    <!--<div class="title"><b>Founder</b></div>-->
-                <!--</div>-->
-            <!--</div>-->
-            <div class="table-header">
-                <div>
-                    <div class="title"><b>Company</b></div>
-                </div>
-                <div>
-                    <div class="title"><b>Location</b></div>
-                </div>
-                <div>
-                    <div class="title"><b>Market</b></div>
-                </div>
-                <div>
-                    <div class="title"><b>Website</b></div>
-                </div>
-                <div>
-                    <div class="title"><b>Employees</b></div>
-                </div>
-                <div>
-                    <div class="title"><b>Stage</b></div>
-                </div>
-                <div>
-                    <div class="title"><b>Funding</b></div>
-                </div>
-                <div>
-                    <div class="title"><b>Founder</b></div>
-                </div>
-            </div>
             <div class="company-list table-description" ng-repeat="company in companyDetailsArr">
                 <div class="inner-wrapper">
-                    <div>
-                        <div class="img-wrapper" ng-mouseover="getCards($index)" ng-mouseleave="hideCards($index)"><img src="{{company.basicDetail.imageUrl}}" alt=""></div>
+                    <div class="table-header" ng-if="$index==0" style="text-align: left"><b>Company</b></div>
+                    <div class="company-basic-info">
+                        <div class="img-wrapper" ng-mouseover="getCards($index)" ng-mouseleave="hideCards($index)"><img src="{{company.company.imageUrl}}" alt=""></div>
                         <div class="content-wrapper">
-                            <div class="company-name">{{company.basicDetail.name}}</div>
-                            <div>{{company.basicDetail.description}}</div>
-                            <div class="hover-card-wrapper text-center" ng-init="companyCard[$index]=false" ng-show="companyCard[$index]">
-                                <div class="img-wrapper"><img src="{{company.basicDetail.imageUrl}}" alt=""></div>
+                            <div class="company-name">{{company.company.name}}</div>
+                            <div>{{company.company.description}}</div>
+                        </div>
+                        <div class="hover-card-wrapper text-center" ng-init="companyCard[$index]=false" ng-show="companyCard[$index]">
+                            <div class="img-wrapper"><img src="{{company.company.imageUrl}}" alt=""></div>
+                            <div>
+                                <div class="company-name"><b>{{company.company.name}}</b></div>
+                                <div class="description-wrapper">{{company.company.description}}</div>
+                                <div class="website-link"><a href="#">{{company.website}}</a></div>
                                 <div>
-                                    <div class="company-name">{{company.basicDetail.name}}</div>
-                                    <div class="description-wrapper">{{company.basicDetail.description}}</div>
-                                    <div class="website-link"><a href="#">{{company.basicDetail.website}}</a></div>
-                                    <div>
-                                        <i class="fa fa-facebook"></i>
-                                        <i class="fa fa-twitter"></i>
-                                        <i class="fa fa-linkedin"></i>
-                                    </div>
+                                    <i class="fa fa-facebook"></i>
+                                    <i class="fa fa-twitter"></i>
+                                    <i class="fa fa-linkedin"></i>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div class="company-basic-info-ending-wrapper" ng-if="$last"></div>
                 </div>
-                <div>
-                    <div>
-                        <div>{{company.location}}</div>
-                    </div>
+                <div ng-if="customisedListArr['1']['checked'] == true">
+                    <div class="table-header" ng-if="$index==0"><b>Location</b></div>
+                    <div class="table-content">{{company.location}}</div>
+                    <div class="table-ending-wrapper" ng-if="$last"></div>
                 </div>
-                <div>
-                    <div>
-                        <div>{{company.market}}</div>
-                    </div>
+                <div ng-if="customisedListArr['2']['checked'] == true">
+                    <div class="table-header" ng-if="$index==0"><b>Market</b></div>
+                    <div class="table-content">{{company.market}}</div>
+                    <div class="table-ending-wrapper" ng-if="$last"></div>
                 </div>
-                <div>
-                    <div>
-                        <div>{{company.website}}</div>
-                    </div>
+                <div ng-if="customisedListArr['3']['checked'] == true">
+                    <div class="table-header" ng-if="$index==0"><b>Website</b></div>
+                    <div class="table-content website-link">{{company.website}}</div>
+                    <div class="table-ending-wrapper" ng-if="$last"></div>
                 </div>
-                <div>
-                    <div ng-if="company.employees != null">{{company.employees}}</div>
-                    <div ng-if="company.employees == null">-</div>
+                <div ng-if="customisedListArr['4']['checked'] == true">
+                    <div class="table-header" ng-if="$index==0"><b>Employees</b></div>
+                    <div class="table-content" ng-if="company.employees != null">{{company.employees}}</div>
+                    <div class="table-content" ng-if="company.employees == null">-</div>
+                    <div class="table-ending-wrapper" ng-if="$last"></div>
                 </div>
-                <div>
-                    <div>{{company.stage}}</div>
+                <div ng-if="customisedListArr['5']['checked'] == true">
+                    <div class="table-header" ng-if="$index==0"><b>Stage</b></div>
+                    <div class="table-content">{{company.stage}}</div>
+                    <div class="table-ending-wrapper" ng-if="$last"></div>
                 </div>
-                <div>
-                    <div>{{company.funding}}</div>
+                <div ng-if="customisedListArr['6']['checked'] == true">
+                    <div class="table-header" ng-if="$index==0"><b>Total Funding</b></div>
+                    <div class="table-content">{{company.totalFunding}}</div>
+                    <div class="table-ending-wrapper" ng-if="$last"></div>
                 </div>
-                <div>
-                    <div>{{company.founder}}</div>
+                <div ng-if="customisedListArr['7']['checked'] == true">
+                    <div class="table-header" ng-if="$index==0"><b>Founder</b></div>
+                    <div class="table-content">{{company.founder}}</div>
+                    <div class="table-ending-wrapper" ng-if="$last"></div>
                 </div>
             </div>
-            <!--<div class="row company-list" ng-repeat="company in companyDetailsArr">-->
-                <!--<div class="col-lg-3 col-md-3 col-sm-3 col-xs-2 inner-wrapper">-->
-                    <!--<div>-->
-                        <!--<div class="img-wrapper" ng-mouseover="getCards($index)" ng-mouseleave="hideCards($index)"><img src="{{company.basicDetail.imageUrl}}" alt=""></div>-->
-                        <!--<div class="content-wrapper">-->
-                            <!--<div class="company-name">{{company.basicDetail.name}}</div>-->
-                            <!--<div>{{company.basicDetail.description}}</div>-->
-                            <!--<div class="hover-card-wrapper text-center" ng-init="companyCard[$index]=false" ng-show="companyCard[$index]">-->
-                                <!--<div class="img-wrapper"><img src="{{company.basicDetail.imageUrl}}" alt=""></div>-->
-                                <!--<div>-->
-                                    <!--<div class="company-name">{{company.basicDetail.name}}</div>-->
-                                    <!--<div class="description-wrapper">{{company.basicDetail.description}}</div>-->
-                                    <!--<div class="website-link"><a href="#">{{company.basicDetail.website}}</a></div>-->
-                                    <!--<div>-->
-                                        <!--<i class="fa fa-facebook"></i>-->
-                                        <!--<i class="fa fa-twitter"></i>-->
-                                        <!--<i class="fa fa-linkedin"></i>-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">-->
-                    <!--<div>-->
-                       <!--<div>{{company.location}}</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">-->
-                    <!--<div>-->
-                        <!--<div>{{company.market}}</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">-->
-                    <!--<div>-->
-                        <!--<div>{{company.website}}</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--<div class="col-lg-1 col-md-1 col-sm-2 col-xs-2">-->
-                   <!--<div ng-if="company.employees != null">{{company.employees}}</div>-->
-                   <!--<div ng-if="company.employees == null">-</div>-->
-                <!--</div>-->
-                <!--<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">-->
-                    <!--<div>{{company.stage}}</div>-->
-                <!--</div>-->
-                <!--<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">-->
-                    <!--<div>{{company.funding}}</div>-->
-                <!--</div>-->
-                <!--<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">-->
-                    <!--<div>{{company.founder}}</div>-->
-                <!--</div>-->
-            <!--</div>-->
         </div>
     </div>
 </div>
