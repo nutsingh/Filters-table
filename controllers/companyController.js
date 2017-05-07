@@ -13,6 +13,10 @@ myApp.controller('myController', function ($scope, $http) {
     $scope.cities = [{city: 'Delhi-NCR', checked: false}, {city: 'Bangalore', checked: false}, {city: 'Mumbai', checked: false}, {city: 'Hyderabad', checked: false}, {city: 'Chennai', checked: false}];
     $scope.markets = [{market: 'E-commerce', checked: false}, {market: 'Education', checked: false}, {market: 'Enterprise software', checked: false}, {market: 'Health Care', checked: false}, {market: 'Mobile', checked: false}];
     $scope.stages = [{stage: 'Series A', checked: false}, {stage: 'Series B', checked: false}, {stage: 'Series C', checked: false}, {stage: 'Series D', checked: false}, {stage: 'Late', checked: false}, {stage: 'Pre Series A', checked: false}];
+
+    /**
+     * Fetch the JSON data of company
+     */
     $scope.getCompaniesList = function () {
         $http.get("script.json")
             .then(function(response) {
@@ -24,6 +28,10 @@ myApp.controller('myController', function ($scope, $http) {
     };
     $scope.getCompaniesList();
 
+    /**
+     * maintained an array for customised column purpose
+     * @return {Array}
+     */
     $scope.getCustomisedList  = function () {
       $scope.keys = Object.keys($scope.companyDetailsArr[0]);
         $scope.arr = [];
@@ -37,28 +45,51 @@ myApp.controller('myController', function ($scope, $http) {
       }
       return $scope.arr;
     };
+
+    /**
+     * a company card is shown on mouse over
+     * @param index integer
+     */
     $scope.getCards = function (index) {
         $scope.companyCard[index] = true;
     };
+    /**
+     * a company card is hidden on mouse leave
+     * @param index integer
+     */
     $scope.hideCards = function (index) {
         $scope.companyCard[index] = false;
     };
+    /**
+     * Request more data on load more button
+     */
     $scope.loadMoreCompanyList = function () {
         $scope.getCompaniesList();
     };
+    /**
+     * used to show the customised list of different categories of company
+     */
     $scope.openCustomisedList = function () {
         $scope.showCustomisedList = true;
     };
+    /**
+     * hide the customised list of different categories of company
+     */
     $scope.closeCustomisedList = function () {
         $scope.showCustomisedList = false;
     };
+    /**
+     * clear the entered keyword in input box
+     */
     $scope.clearKeyword = function () {
       $scope.searchAll = '';
       $scope.suggestedTags = [];
     };
-    $scope.clearTag = function (index) {
-
-    };
+    /**
+     * sanitize the title of different categories of company like (totalFunding to Total Funding) for display purpose
+     * @param str string
+     * @return {string}
+     */
     $scope.getDisplayedTitle = function (str) {
         var arr = str.split(/(?=[A-Z])/);
         for(var j=0; j<arr.length; j++) {
@@ -67,17 +98,27 @@ myApp.controller('myController', function ($scope, $http) {
         var newStr = arr.join(' ');
         return newStr;
     };
+    /**
+     * slide the columns from right to left
+     */
     $('#slide-left-column').on('click', function() {
         $('.company-details-wrapper .inner-wrapper').animate({
             scrollLeft: "-=150px"
         }, "slow");
     });
+    /**
+     * slide the columns from left to right
+     */
     $('#slide-right-column').on('click', function() {
         $('.company-details-wrapper .inner-wrapper').animate({
             scrollLeft: "+=150px"
         }, "slow");
     });
 
+    /**
+     * get the searched tag on key enter
+     * @param $event
+     */
     $scope.getSearchedTags = function($event){
         var keyCode = $event.which || $event.keyCode;
         if (keyCode === 13 ) {
@@ -86,9 +127,17 @@ myApp.controller('myController', function ($scope, $http) {
             $scope.searchAll = '';
         }
     };
+    /**
+     * used to remove the tag
+     * @param index integer
+     */
     $scope.removeTag = function (index) {
         $scope.suggestedTags.splice(index, 1);
     };
+    /**
+     * set the matched keywords in list to true
+     * @param suggestedTags Array
+     */
     $scope.matchSuggestedTags = function (suggestedTags) {
         for(var i=0; i<suggestedTags.length; i++) {
             $scope.cities.forEach(function(currentValue, index, arr) {
